@@ -67,7 +67,7 @@ npm run dev
 
 ## 🌐 Deploy
 
-🔗 Em breve
+🔗 https://jobfinder-mc.vercel.app/
 
 ## 👩‍💻 Desenvolvido por
 
