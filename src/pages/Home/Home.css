@@ -1,0 +1,75 @@
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 40px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #CBD5E1;
+}
+
+.jobs-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search {
+  margin-top: 24px;
+}
+
+.search input {
+  width: 100%;
+  max-width: 600px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.jobs-count {
+  max-width: 1200px;
+  margin: 16px auto 0;
+  padding: 0 20px 20px;
+  font-size: 14px;
+  color: #CBD5E1;
+}
+
+.status-message {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.filter {
+  margin-top: 12px;
+}
+
+.filter select {
+  padding: 12px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #0B102B;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .jobs-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,36 @@
+.job-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  color: #0B102B;
+  min-width: 0;
+}
+
+.job-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.job-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.job-card p {
+  font-size: 14px;
+  color: #64748B;
+}
+
+.job-link {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #3157E8;
+}
+
+.job-link:hover {
+  text-decoration: underline;
+}
