@@ -1,25 +1,28 @@
 # JobFinder
 
-Aplicação web para busca e consulta de oportunidades de emprego, desenvolvida com React e TypeScript e integrada a uma API REST externa.
+Aplicação web para busca e consulta de oportunidades de emprego, desenvolvida com React e TypeScript e integrada à API REST da Jobicy.
 
 ## ✦ Sobre o projeto
 
-O JobFinder permite visualizar vagas de emprego, pesquisar oportunidades por cargo ou palavra-chave, filtrar por nível e acessar uma página com os detalhes de cada vaga.
+O JobFinder é um projeto de portfólio desenvolvido com o objetivo de praticar conceitos de desenvolvimento Front-End moderno, com foco no consumo de APIs REST, tipagem com TypeScript, gerenciamento de estados assíncronos, componentização e roteamento.
 
-O projeto foi desenvolvido com foco em praticar conceitos de desenvolvimento Front-End moderno, especialmente consumo de APIs REST, gerenciamento de estados assíncronos, tipagem com TypeScript, componentização e roteamento.
+A aplicação permite visualizar oportunidades de emprego, pesquisar vagas por cargo ou palavra-chave, filtrar por nível de experiência e consultar os detalhes de cada oportunidade.
+
+**Sobre as vagas:** os dados são fornecidos pela API da Jobicy, uma plataforma internacional de oportunidades de emprego. Por isso, as vagas podem estar em inglês e apresentar oportunidades de diferentes localidades. O objetivo principal deste projeto é demonstrar a integração com uma API externa e o tratamento dos dados recebidos. As candidaturas são realizadas diretamente na plataforma de origem.
 
 ## 🚀 Funcionalidades
 
-- Listagem de vagas
+- Listagem de vagas obtidas por API REST
 - Busca por cargo ou palavra-chave
-- Filtro por nível
+- Filtro por nível de experiência
 - Contagem de resultados
 - Estado de carregamento
-- Estado de erro
+- Tratamento de erros na requisição
 - Estado de resultados vazios
 - Página de detalhes da vaga
+- Exibição de salário quando disponibilizado pela API
 - Navegação entre páginas com React Router
-- Link para a vaga original
+- Link para a publicação original da vaga
 - Interface responsiva
 
 ## 🛠️ Tecnologias
@@ -34,14 +37,17 @@ O projeto foi desenvolvido com foco em praticar conceitos de desenvolvimento Fro
 
 ## 🔌 API
 
-Os dados das vagas são obtidos através da API pública do The Muse.
+Os dados das oportunidades são obtidos através da API pública da **Jobicy**.
 
-A aplicação realiza requisições HTTP utilizando `fetch` e processa os dados recebidos em formato JSON.
+A aplicação realiza requisições HTTP utilizando `fetch`, processa as respostas em formato JSON e utiliza TypeScript para definir a estrutura dos dados recebidos.
+
+Créditos: [Jobicy](https://jobicy.com/).
 
 ## 📚 Conceitos praticados
 
 Durante o desenvolvimento foram trabalhados:
 
+- Consumo de APIs REST
 - `fetch`
 - Promises
 - `async/await`
@@ -52,10 +58,11 @@ Durante o desenvolvimento foram trabalhados:
 - Arrays e objetos
 - `map()` e `filter()`
 - Props
+- Componentização
 - React Router
 - Rotas dinâmicas
-- Estados de loading, erro e vazio
-- Renderização de dados vindos de uma API
+- Gerenciamento de estados de carregamento, erro e vazio
+- Renderização de dados externos
 - Responsividade com CSS
 
 ## 💻 Como executar o projeto
@@ -67,7 +74,7 @@ npm run dev
 
 ## 🌐 Deploy
 
-🔗 https://jobfinder-mc.vercel.app/
+[https://jobfinder-mc.vercel.app/](https://jobfinder-mc.vercel.app/)
 
 ## 👩‍💻 Desenvolvido por
 

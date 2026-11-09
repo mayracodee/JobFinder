@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import type { ApiResponse, Job } from "../../types/job";
@@ -11,18 +12,27 @@ function JobDetails() {
 
   useEffect(() => {
     async function buscarVaga() {
-      const resposta = await fetch(
-        "https://www.themuse.com/api/public/jobs?page=1",
-      );
+      try {
+        const resposta = await fetch(
+          "https://jobicy.com/api/jobs?count=10&industry=engineering"
+        );
 
-      const dados = (await resposta.json()) as ApiResponse;
+        if (!resposta.ok) {
+          throw new Error("Erro ao carregar vaga");
+        }
 
-      const vagaEncontrada = dados.results.find(
-        (vaga) => vaga.id === Number(id),
-      );
+        const dados = (await resposta.json()) as ApiResponse;
 
-      setVaga(vagaEncontrada ?? null);
-      setCarregando(false);
+        const vagaEncontrada = dados.jobs.find(
+          (vaga) => vaga.id === Number(id)
+        );
+
+        setVaga(vagaEncontrada ?? null);
+      } catch {
+        setVaga(null);
+      } finally {
+        setCarregando(false);
+      }
     }
 
     buscarVaga();
@@ -41,23 +51,32 @@ function JobDetails() {
           </Link>
 
           <div className="job-header">
-            <h1>{vaga.name}</h1>
+            <h1>{vaga.jobTitle}</h1>
 
-            <p>{vaga.company.name}</p>
+            <p>{vaga.companyName}</p>
 
-            <p>{vaga.locations[0].name}</p>
+            <p>{vaga.jobGeo}</p>
 
-            <p>{vaga.levels[0].name}</p>
+            <p>{vaga.jobLevel}</p>
+
+            {vaga.salaryMin != null && vaga.salaryMax != null && (
+              <p>
+                {vaga.salaryCurrency} {vaga.salaryMin.toLocaleString()} –{" "}
+                {vaga.salaryMax.toLocaleString()} ({vaga.salaryPeriod})
+              </p>
+            )}
           </div>
 
           <div
             className="job-description"
-            dangerouslySetInnerHTML={{ __html: vaga.contents }}
+            dangerouslySetInnerHTML={{
+              __html: vaga.jobDescription,
+            }}
           />
 
           <div className="job-actions">
             <a
-              href={vaga.refs.landing_page}
+              href={vaga.url}
               target="_blank"
               rel="noopener noreferrer"
             >

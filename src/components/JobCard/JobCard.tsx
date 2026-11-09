@@ -10,10 +10,10 @@ function JobCard({ job }: JobCardProps) {
   return (
     <article className="job-card">
       <div className="job-info">
-        <h2>{job.name}</h2>
-        <p>{job.company.name}</p>
-        <p>{job.locations[0].name}</p>
-        <p>{job.levels[0].name}</p>
+        <h2>{job.jobTitle}</h2>
+        <p>{job.companyName}</p>
+        <p>{job.jobGeo}</p>
+        <p>{job.jobLevel}</p>
       </div>
       <Link to={`/vaga/${job.id}`} className="job-link">
         Ver vaga

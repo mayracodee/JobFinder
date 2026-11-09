@@ -1,36 +1,33 @@
-export interface Company {
-  id: number;
-  name: string;
-  short_name: string;
-}
-
-export interface Location {
-  name: string;
-}
-
-export interface Level {
-  name: string;
-  short_name: string;
-}
-
-export interface Refs {
-  landing_page: string;
-}
-
 export interface Job {
   id: number;
-  name: string;
-  contents: string;
-  company: Company;
-  locations: Location[];
-  levels: Level[];
-  refs: Refs;
+  url: string;
+  jobTitle: string;
+  companyName: string;
+  companyLogo?: string;
+  jobIndustry: string[];
+  jobType: string[];
+  jobGeo: string;
+  jobLevel: string;
+  jobExcerpt: string;
+  jobDescription: string;
+  pubDate: string;
+  salaryMin?: number;
+  salaryMax?: number;
+  salaryCurrency?: string;
+  salaryPeriod?: string;
 }
 
 export interface ApiResponse {
-  page: number;
-  page_count: number;
-  items_per_page: number;
-  total: number;
-  results: Job[];
+  apiVersion: string;
+  documentationUrl: string;
+  friendlyNotice: string;
+  jobCount: number;
+  lastUpdate: string;
+  nextCursor: string;
+  hasMore: boolean;
+  appliedFilters: {
+    count: number;
+    industry: string;
+  };
+  jobs: Job[];
 }

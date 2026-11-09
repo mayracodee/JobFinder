@@ -3,6 +3,7 @@ import type { ApiResponse, Job } from "../../types/job";
 import JobCard from "../../components/JobCard/JobCard";
 import "./Home.css";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 function Home() {
   const [vagas, setVagas] = useState<Job[]>([]);
@@ -13,14 +14,16 @@ function Home() {
 
   const vagasFiltradas = vagas.filter(
     (vaga) =>
-      vaga.name.toLowerCase().includes(busca.toLowerCase()) &&
+      vaga.jobTitle.toLowerCase().includes(busca.toLowerCase()) &&
       (nivelSelecionado === "Todos os níveis" ||
-        vaga.levels[0].name === nivelSelecionado),
+        vaga.jobLevel === nivelSelecionado),
   );
 
   async function buscarVagas() {
     try {
-      const resposta = await fetch("/api/jobs");
+      const resposta = await fetch(
+        "https://jobicy.com/api/jobs?count=10&industry=engineering",
+      );
 
       if (!resposta.ok) {
         throw new Error("Erro ao carregar vagas");
@@ -28,7 +31,7 @@ function Home() {
 
       const dados = (await resposta.json()) as ApiResponse;
 
-      setVagas(dados.results);
+      setVagas(dados.jobs);
       setCarregando(false);
     } catch {
       setErro(true);
@@ -39,7 +42,7 @@ function Home() {
   useEffect(() => {
     buscarVagas();
   }, []);
-  console.log(busca);
+  
   return (
     <section>
       <Header />
@@ -59,9 +62,9 @@ function Home() {
         <div className="filter">
           <select onChange={(event) => setNivelSelecionado(event.target.value)}>
             <option>Todos os níveis</option>
-            <option>Entry Level</option>
-            <option>Mid Level</option>
-            <option>Senior Level</option>
+            <option value="Any">Qualquer nível</option>
+            <option value="Senior">Sênior</option>
+            <option value="Director">Diretor</option>
           </select>
         </div>
 
@@ -83,6 +86,8 @@ function Home() {
           <JobCard key={vaga.id} job={vaga} />
         ))}
       </div>
+
+      <Footer />
     </section>
   );
 }
