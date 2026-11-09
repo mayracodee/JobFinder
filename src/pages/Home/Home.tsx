@@ -20,9 +20,7 @@ function Home() {
 
   async function buscarVagas() {
     try {
-      const resposta = await fetch(
-        "https://www.themuse.com/api/public/jobs?page=1",
-      );
+      const resposta = await fetch("/api/jobs");
 
       if (!resposta.ok) {
         throw new Error("Erro ao carregar vagas");
